@@ -15,7 +15,7 @@ spring:
       password: ${sky.datasource.password}
 
 mybatis:
-  #mapper配置文件，在mapper包下面，可以扫描到xml映射文件
+  #mapper配置文件，在mapper包下面，可以扫描到xml映射文件,可以写别名
   mapper-locations: classpath:mapper/*.xml
   type-aliases-package: com.sky.entity
   configuration:
@@ -35,6 +35,6 @@ sky:
     # 设置jwt签名加密时使用的秘钥
     admin-secret-key: itcast
     # 设置jwt过期时间
-    admin-ttl: 7200000
+    admin-ttl: 14400000
     # 设置前端传递过来的令牌名称，会按照这个名字获取令牌
     admin-token-name: token
