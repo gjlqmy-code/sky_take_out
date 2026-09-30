@@ -14,7 +14,7 @@
         order by create_time desc
     </select>
 
-    <update id="update"><!--参数类型paramType可省略-->
+    <update id="update" parameterType="Employee"><!--参数类型paramType可省略-->
         update employee
         <set>
             <if test="name != null">name = #{name},</if>
@@ -26,7 +26,6 @@
             <if test="updateTime != null">update_Time = #{updateTime},</if>
             <if test="updateUser != null">update_User = #{updateUser},</if>
             <if test="status != null">status = #{status},</if>
-
         </set>
         where id=#{id}
     </update>
