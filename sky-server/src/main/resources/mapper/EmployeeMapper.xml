@@ -2,4 +2,14 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.sky.mapper.EmployeeMapper">
+    <select id="pageQuery" resultType="com.sky.entity.Employee"><!--回值类型是Page集合当中封装的元素类型-->
+        select  * from employee
+        <where>
+            <if test="name !=null and name !=''">
+                and name like concat('%',#{name},'%')
+        <!--<有pagehelper插件就不用写limit了-->
+            </if>
+        </where>
+        order by create_time desc
+    </select>
 </mapper>
