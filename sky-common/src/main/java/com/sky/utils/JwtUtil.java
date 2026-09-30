@@ -46,7 +46,7 @@ public class JwtUtil {
      * @return
      */
     public static Claims parseJWT(String secretKey, String token) {
-        // 得到DefaultJwtParser
+        // 得到DefaultJwtParser，JWT的解析对象用来校验解析token，JWTtoken生成token的时候，用这个秘钥对header+payload做签名；解析的时候，必须传入同一个秘钥。底层会校验token的签名是否合法：
         Claims claims = Jwts.parser()
                 // 设置签名的秘钥
                 .setSigningKey(secretKey.getBytes(StandardCharsets.UTF_8))

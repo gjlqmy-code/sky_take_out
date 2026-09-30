@@ -38,11 +38,22 @@ public class WebMvcConfiguration extends WebMvcConfigurationSupport {
     }
 
     /**
-     * 通过knife4j生成接口文档
+     * 通过knife4j生成接口文档底层是swargger docket那些扫描逻辑
+     * swargger+Docket负责扫描Controller，收集接口信息，生成接口的JSON元数据
+     * knife4j读取这份元数据渲染成好看的页面
+     * swargger常用注解
+     * 1.@Api → 给Controller类打说明
+     *
+     * 2.@ApiOperation → 给Controller里面单个接口方法写描述
+     *
+     * 3.@ApiModel → 给实体类（DTO/VO）写说明
+     *
+     * 4.@ApiModelProperty → 给实体类里的字段写说明（比如EmployeeLoginDTO里面username、password）
      * @return
      */
     @Bean
     public Docket docket() {
+        log.info("准备生成接口文档");
         ApiInfo apiInfo = new ApiInfoBuilder()
                 .title("苍穹外卖项目接口文档")
                 .version("2.0")

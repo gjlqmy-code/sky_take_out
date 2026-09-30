@@ -6,6 +6,7 @@ spring:
     active: dev
   main:
     allow-circular-references: true
+   #   数据库连接信息
   datasource:
     druid:
       driver-class-name: ${sky.datasource.driver-class-name}
@@ -35,5 +36,5 @@ sky:
     admin-secret-key: itcast
     # 设置jwt过期时间
     admin-ttl: 7200000
-    # 设置前端传递过来的令牌名称
+    # 设置前端传递过来的令牌名称，会按照这个名字获取令牌
     admin-token-name: token
