@@ -16,3 +16,6 @@ sky:
     port: 6379
     password: Guojinglei012615
     database: 0
+  wechat:
+    appid: wx4043ca8c362ff62d
+    secret: 4d0190f223c7b690a52a20c15a56960e

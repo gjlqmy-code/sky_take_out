@@ -43,8 +43,15 @@ sky:
     admin-ttl: 14400000
     # 设置前端传递过来的令牌名称，会按照这个名字获取令牌
     admin-token-name: token
+    user-secret-key: qmy
+    user-ttl: 14400000
+    user-token-name: authentication
   alioss:
     endpoint: ${sky.alioss.endpoint}
     access-key-id: ${sky.alioss.access-key-id}
     access-key-secret: ${sky.alioss.access-key-secret}
     bucket-name: ${sky.alioss.bucket-name}
+
+  wechat:
+    appid: ${sky.wechat.appid}
+    secret: ${sky.wechat.secret}
