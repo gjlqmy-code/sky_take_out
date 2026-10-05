@@ -34,7 +34,7 @@ public class PayNotifyController {
      *
      * @param request
      */
-    @RequestMapping("/paySuccess")
+    @RequestMapping("/paySuccess")//该方法执行完后回调
     public void paySuccessNotify(HttpServletRequest request, HttpServletResponse response) throws Exception {
         //读取数据
         String body = readData(request);
