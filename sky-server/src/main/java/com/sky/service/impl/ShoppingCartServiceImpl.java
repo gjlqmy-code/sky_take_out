@@ -94,7 +94,7 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
      */
     public void subShoppingCart(ShoppingCartDTO shoppingCartDTO) {
         ShoppingCart shoppingCart = new ShoppingCart();
-        BeanUtils.copyProperties(shoppingCartDTO,shoppingCart);
+        BeanUtils.copyProperties(shoppingCartDTO,shoppingCart);//DTO传过来的有，可以直接拷贝
         //设置查询条件，查询当前登录用户的购物车数据
         shoppingCart.setUserId(BaseContext.getCurrentId());
 
