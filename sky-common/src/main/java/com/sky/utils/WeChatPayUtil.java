@@ -206,7 +206,7 @@ public class WeChatPayUtil {
     }
 
     /**
-     * 申请退款
+     * 申请退款（只用了Mapper的查询功能）
      *
      * @param outTradeNo    商户订单号
      * @param outRefundNo   商户退款单号
