@@ -1,4 +1,7 @@
+import com.sky.dto.OrdersCancelDTO;
+import com.sky.dto.OrdersConfirmDTO;
 import com.sky.dto.OrdersPageQueryDTO;
+import com.sky.dto.OrdersRejectionDTO;
 import com.sky.result.PageResult;
 import com.sky.result.Result;
 import com.sky.service.OrderService;
@@ -8,10 +11,7 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * 订单管理
@@ -59,5 +59,46 @@ public class OrderController {
     public Result<OrderVO> details(@PathVariable("id") Long id) {
         OrderVO orderVO = orderService.details(id);
         return Result.success(orderVO);
+    }
+    /**
+     * 接单
+     *
+     * @return
+     */
+    @PutMapping("/confirm")
+    @ApiOperation("接单")
+    public Result confirm(@RequestBody OrdersConfirmDTO ordersConfirmDTO) {
+        orderService.confirm(ordersConfirmDTO);
+        return Result.success();
+    }
+
+    /**
+     * 拒单
+     * - 商家拒单其实就是将订单状态修改为“已取消”
+     * - 只有订单处于“待接单”状态时可以执行拒单操作
+     * - 商家拒单时需要指定拒单原因
+     * - 商家拒单时，如果用户已经完成了支付，需要为用户退款
+     *
+     * @return
+     */
+    @PutMapping("/rejection")
+    @ApiOperation("拒单")
+    public Result rejection(@RequestBody OrdersRejectionDTO ordersRejectionDTO) throws Exception {
+        orderService.rejection(ordersRejectionDTO);
+        return Result.success();
+    }
+
+    /**
+     * 取消订单
+     *- 取消订单其实就是将订单状态修改为“已取消”
+     * - 商家取消订单时需要指定取消原因
+     * - 商家取消订单时，如果用户已经完成了支付，需要为用户退款
+     * @return
+     */
+    @PutMapping("/cancel")
+    @ApiOperation("取消订单")
+    public Result cancel(@RequestBody OrdersCancelDTO ordersCancelDTO) throws Exception {
+        orderService.cancel(ordersCancelDTO);
+        return Result.success();
     }
 }
