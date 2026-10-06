@@ -101,4 +101,30 @@ public class OrderController {
         orderService.cancel(ordersCancelDTO);
         return Result.success();
     }
+
+    /**
+     * 派送订单
+     *- 派送订单其实就是将订单状态修改为“派送中”
+     * - 只有状态为“待派送”的订单可以执行派送订单操作
+     * @return
+     */
+    @PutMapping("/delivery/{id}")
+    @ApiOperation("派送订单")
+    public Result delivery(@PathVariable("id") Long id) {
+        orderService.delivery(id);
+        return Result.success();
+    }
+
+    /**
+     * 完成订单
+     *- 完成订单其实就是将订单状态修改为“已完成”
+     * - 只有状态为“派送中”的订单可以执行订单完成操作
+     * @return
+     */
+    @PutMapping("/complete/{id}")
+    @ApiOperation("完成订单")
+    public Result complete(@PathVariable("id") Long id) {
+        orderService.complete(id);
+        return Result.success();
+    }
 }

@@ -12,7 +12,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * WebSocket服务
+ * WebSocket服务（一次握手即可双向）
  */
 @Component
 @ServerEndpoint("/ws/{sid}")

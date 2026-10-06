@@ -61,3 +61,10 @@ sky:
     weChatPayCertFilePath: ${sky.wechat.weChatPayCertFilePath}
     notifyUrl: ${sky.wechat.notifyUrl}
     refundNotifyUrl: ${sky.wechat.refundNotifyUrl}
+#   待完成
+  shop:
+      address: 河北省秦皇岛市xxx（你的店铺真实地址）
+  baidu:
+      ak: 这里填你在百度地图开放平台申请的AK密钥
+
+
